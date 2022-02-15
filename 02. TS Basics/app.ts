@@ -1,55 +1,16 @@
-const person: {
-  name: string;
-  age: number;
-} = {
-  name: "George",
-  age: 35,
-};
+let userInput: unknown;
+let userName: string;
 
-// the best way is let TS infer the type
-const person1: {
-  name: string;
-  age: number;
-  hobbies: string[];
-  role: [number, string, boolean];
-} = {
-  name: "George",
-  age: 35,
-  hobbies: ["Sports", "Cooking", "Coding"],
-  role: [2, "programmer", true],
-};
+userInput = 5;
+userInput = "Max";
 
-// person1.role[1] = 4; // this is not allowed because the type don't match
-
-// using enum
-
-enum Role {
-  ADMIN,
-  USER,
-  GUEST,
+if (typeof userInput === "string") {
+  userName = userInput;
 }
 
-const person2 = {
-  name: "George",
-  age: 35,
-  hobbies: ["Sports", "Cooking", "Coding"],
-  role: Role.ADMIN,
-};
-
-let favPersons: string[] = ["George", "John", "Jane"];
-
-let anyData: any[] = ["George", 1, 5.8, true];
-
-console.log(person.name);
-
-for (const hobby of person1.hobbies) {
-  console.log(hobby.toUpperCase());
+// function to generate error object
+function generateError(message: string, code: number): never {
+  throw { message: message, code: code };
 }
 
-console.log(
-  person1.role[0],
-  " is a ",
-  person1.role[1],
-  "and eligible for promotion: ",
-  person1.role[2]
-);
+generateError("An error occurred!", 500);

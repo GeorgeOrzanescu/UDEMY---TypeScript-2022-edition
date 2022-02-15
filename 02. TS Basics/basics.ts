@@ -20,10 +20,10 @@ let num;
 
 let num2: number; // so TS know that this is a number
 
-const printResult = true;
+// const printResult = true;
 
 let resultPhrase = "Result is: ";
 
-const result = add(number1, number2, printResult, resultPhrase);
+const result = add(number1, number2, true, resultPhrase);
 
 console.log(result);
