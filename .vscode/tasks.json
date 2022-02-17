@@ -3,10 +3,10 @@
   "tasks": [
     {
       "type": "typescript",
-      "tsconfig": "04. NextGen_JS_TS/tsconfig.json",
+      "tsconfig": "05. Classes_Interfaces/tsconfig.json",
       "problemMatcher": ["$tsc"],
       "group": "build",
-      "label": "04. NextGen_JS_TS/tsconfig.json"
+      "label": "05. Classes_Interfaces/tsconfig.json"
     }
   ]
 }
