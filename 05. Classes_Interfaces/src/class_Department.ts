@@ -15,6 +15,7 @@ abstract class Department {
   printEmployeeInformation() {
     console.log(this.employees.length);
     console.log(this.employees);
+    console.log(this.id);
   }
   // static class method
   static createEmployee(name: string) {

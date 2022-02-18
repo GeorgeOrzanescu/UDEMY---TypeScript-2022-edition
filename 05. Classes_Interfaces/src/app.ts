@@ -1,75 +1,70 @@
-// inherits the class Department from the other file
-class ITDepartament extends Department {
-  constructor(id: string, public admins: string[]) {
-    super(id, "IT");
+// interfaces are used to define the structure of the object
+interface Named {
+  readonly name?: string;
+  outputName?: string; // optional property
+
+  optionaMethod?(): string; // optional method
+}
+// inheritance in interfaces
+interface Greetable extends Named {
+  greet(phrase: string): void;
+}
+
+let user1: Greetable;
+
+user1 = {
+  name: "Max",
+
+  greet(phrase: string) {
+    console.log("Hi, I am " + this.name + " " + phrase);
+  },
+};
+
+user1.greet("i learn typescript");
+
+// interfaces are used as a contract for a class to implement
+
+class Person implements Greetable {
+  name?: string;
+  age: number; // u can have other attributes and methods
+  constructor(age: number, name?: string) {
+    if (name) {
+      this.name = name;
+    }
+    this.age = age;
   }
 
-  describe(this: Department): void {
-    console.log("IT Departament - ID: " + " implementation from ITDepartament");
+  greet(phrase: string) {
+    if (this.name) {
+      console.log("Hi, I am " + this.name + " " + phrase);
+    } else {
+      console.log("Hi, I am not named" + phrase);
+    }
+  }
+
+  addYear(year?: number) {
+    if (year) {
+      this.age += year;
+    } else {
+      this.age++;
+    }
   }
 }
 
-const IT = new ITDepartament("2", ["Max", "Maria"]);
-IT.describe();
+const user2 = new Person(35);
 
-class AccountingDepartament extends Department {
-  private lastReport: string;
+user2.greet("i learn typescript");
+user2.addYear();
+// interfaces with functions
 
-  get lastTaxReport() {
-    if (this.tax_invoices.length === 0) {
-      return this.lastReport;
-    } else {
-      throw new Error("No tax invoices");
-    }
-  }
+//using type
+type AddFn = (a: number, b: number) => number;
 
-  set lastTaxReport(value: string) {
-    if (value.length > 3) {
-      this.lastReport = value;
-    } else {
-      throw new Error("Tax report has to be longer than 3 characters");
-    }
-  }
+const add: AddFn = (a, b: number) => a + b;
 
-  constructor(id: string, private tax_invoices: string[]) {
-    super(id, "Accounting");
-    this.lastReport = tax_invoices[0];
-  }
-
-  addEmployee(name: string) {
-    if (name === "Max") {
-      return;
-    }
-    this.employees.push(name);
-  }
-
-  addTax(tax: string) {
-    this.tax_invoices.push(tax);
-    this.lastReport = tax;
-  }
-
-  printTaxInvoices() {
-    console.log(this.tax_invoices);
-  }
-
-  describe(this: Department): void {
-    console.log(
-      "IT Departament - ID: " + " implementation from AccountingDepartament"
-    );
-  }
+// using interface
+interface AddFnInterface {
+  (a: number, b: number): number;
 }
 
-const Accounting = new AccountingDepartament("3", [
-  "CAS : 19832",
-  "CASS : 98324",
-]);
-
-Accounting.lastTaxReport;
-Accounting.lastTaxReport = "VAT : 4567";
-
-//static properties and methods
-
-Math.PI; // u call on the Math class itself
-Math.round(Math.PI);
-
-const employee1 = Department.createEmployee("Max"); // call the static method directly on the class
+const add2: AddFnInterface = (a, b) => a + b;
