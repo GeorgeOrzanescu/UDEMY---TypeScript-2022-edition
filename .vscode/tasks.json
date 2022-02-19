@@ -3,10 +3,10 @@
   "tasks": [
     {
       "type": "typescript",
-      "tsconfig": "05. Classes_Interfaces/tsconfig.json",
+      "tsconfig": "06. Advanced Types/tsconfig.json",
       "problemMatcher": ["$tsc"],
       "group": "build",
-      "label": "05. Classes_Interfaces/tsconfig.json"
+      "label": "06. Advanced Types/tsconfig.json"
     }
   ]
 }
