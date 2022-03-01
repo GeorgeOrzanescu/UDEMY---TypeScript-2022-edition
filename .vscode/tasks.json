@@ -3,10 +3,10 @@
   "tasks": [
     {
       "type": "typescript",
-      "tsconfig": "08. Decorators/tsconfig.json",
+      "tsconfig": "09. Practice Project/tsconfig.json",
       "problemMatcher": ["$tsc"],
       "group": "build",
-      "label": "08. Decorators/tsconfig.json"
+      "label": "09. Practice Project/tsconfig.json"
     }
   ]
 }
