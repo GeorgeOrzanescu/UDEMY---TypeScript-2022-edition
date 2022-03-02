@@ -1,5 +1,62 @@
 // OOP APPROACH
 
+enum ProjectStatus {
+  Active,
+  Finished,
+}
+
+// Project type
+class Project {
+  constructor(
+    public id: string,
+    public title: string,
+    public description: string,
+    public people: number,
+    public projectStatus: ProjectStatus
+  ) {}
+}
+
+type Listener = (items: Project[]) => void;
+
+// Project State management class
+
+class ProjectState {
+  private listeners: Listener[] = [];
+  private projects: Project[] = [];
+  private static instance: ProjectState;
+
+  private constructor() {}
+
+  static getInstance() {
+    if (this.instance) {
+      return this.instance;
+    }
+    this.instance = new ProjectState();
+    return this.instance;
+  }
+
+  addListener(listenerFn: Listener) {
+    this.listeners.push(listenerFn);
+  }
+
+  addProject(title: string, description: string, numOfPeople: number) {
+    const newProject = new Project(
+      Math.random().toString(),
+      title,
+      description,
+      numOfPeople,
+      ProjectStatus.Active // default value
+    );
+
+    this.projects.push(newProject);
+    for (const listenerFn of this.listeners) {
+      listenerFn(this.projects.slice()); //uses slice() to make a copy of the array and not the original array
+    }
+  }
+}
+
+const projectState = ProjectState.getInstance(); // global state management object  singleton
+
 // validation logic
 interface Validatable {
   // interface for validation
@@ -72,6 +129,7 @@ class ProjectList {
   templateElement: HTMLTemplateElement;
   hostElement: HTMLDivElement; // the target where we want to add the project
   element: HTMLElement;
+  assignedProjects: Project[] = [];
 
   constructor(private type: "active" | "finished") {
     this.templateElement = document.getElementById(
@@ -86,8 +144,36 @@ class ProjectList {
     this.element = importedNode.firstElementChild as HTMLElement;
     this.element.id = `${this.type}-projects`;
 
+    projectState.addListener((projects: Project[]) => {
+      const relevantProjects = projects.filter((prj) => {
+        // filter the projects based on the type
+        if (this.type === "active") {
+          return prj.projectStatus === ProjectStatus.Active;
+        } else {
+          return prj.projectStatus === ProjectStatus.Finished;
+        }
+      });
+
+      this.assignedProjects = relevantProjects;
+      this.renderProjects();
+    });
+
     this.attach();
     this.renderContent();
+  }
+
+  private renderProjects() {
+    const listEl = document.getElementById(
+      `${this.type}-projects-list`
+    )! as HTMLUListElement;
+
+    listEl.innerHTML = "";
+
+    for (const prjItem of this.assignedProjects) {
+      const listItem = document.createElement("li");
+      listItem.textContent = prjItem.title;
+      listEl.appendChild(listItem);
+    }
   }
 
   private renderContent() {
@@ -189,6 +275,7 @@ class ProjectInput {
     // check if the data is valid  tutple is an array
     if (Array.isArray(userInput)) {
       const [title, desc, people] = userInput; // destructuring
+      projectState.addProject(title, desc, people); // add the project to the project state object
       console.log(title, desc, people);
     }
     this.clearInputs();
