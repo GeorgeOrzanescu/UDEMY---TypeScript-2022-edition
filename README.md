@@ -7,5 +7,5 @@
   - Learn how to combine TypeScript with ReactJS or NodeJS / Express
 
 
-Drag and Drop practice app -->  module 9
+  - Drag and Drop practice app -->  module 9
 ![image](https://user-images.githubusercontent.com/65309085/156563391-e8da9840-35af-48e8-afd2-7df3f0135f70.png)
