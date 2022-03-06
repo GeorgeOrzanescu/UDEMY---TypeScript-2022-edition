@@ -5,3 +5,6 @@
   - Why TypeScript offers a real advantage over vanilla JavaScript
   - Learn TypeScript both in theory as well as applied to real use-cases and projects
   - Learn how to combine TypeScript with ReactJS or NodeJS / Express
+  - Drag and Drop practice app -->  module 9
+
+![image](https://user-images.githubusercontent.com/65309085/156563391-e8da9840-35af-48e8-afd2-7df3f0135f70.png)
