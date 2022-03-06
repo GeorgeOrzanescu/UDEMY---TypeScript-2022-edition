@@ -3,10 +3,10 @@
   "tasks": [
     {
       "type": "typescript",
-      "tsconfig": "09. Practice Project/tsconfig.json",
+      "tsconfig": "10. Modules_Namespaces/tsconfig.json",
       "problemMatcher": ["$tsc"],
       "group": "build",
-      "label": "09. Practice Project/tsconfig.json"
+      "label": "10. Modules_Namespaces/tsconfig.json"
     }
   ]
 }
