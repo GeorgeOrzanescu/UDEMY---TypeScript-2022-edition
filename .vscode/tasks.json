@@ -3,10 +3,21 @@
   "tasks": [
     {
       "type": "typescript",
-      "tsconfig": "11. Webpack/tsconfig.json",
+      "tsconfig": "12. 3rdPartyLibraries/tsconfig.json",
       "problemMatcher": ["$tsc"],
       "group": "build",
-      "label": "11. Webpack/tsconfig.json"
+      "label": "11. 3rdPartyLibraries/tsconfig.json"
+    },
+    {
+      "type": "typescript",
+      "tsconfig": "12. 3rdPartyLibraries/tsconfig.json",
+      "option": "watch",
+      "problemMatcher": ["$tsc-watch"],
+      "group": {
+        "kind": "build",
+        "isDefault": true
+      },
+      "label": "tsc: watch - 12. 3rdPartyLibraries/tsconfig.json"
     }
   ]
 }
