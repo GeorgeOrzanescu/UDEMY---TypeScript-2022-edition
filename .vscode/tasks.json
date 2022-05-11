@@ -3,21 +3,21 @@
   "tasks": [
     {
       "type": "typescript",
-      "tsconfig": "13. SelectShare Project/tsconfig.json",
+      "tsconfig": "15. NodeJs_Express_TS/tsconfig.json",
       "problemMatcher": ["$tsc"],
       "group": "build",
-      "label": "13. SelectShare Project/tsconfig.json"
+      "label": "15. NodeJs_Express_TS/tsconfig.json"
     },
     {
       "type": "typescript",
-      "tsconfig": "13. SelectShare Project/tsconfig.json",
+      "tsconfig": "15. NodeJs_Express_TS/tsconfig.json",
       "option": "watch",
       "problemMatcher": ["$tsc-watch"],
       "group": {
         "kind": "build",
         "isDefault": true
       },
-      "label": "tsc: watch - 13. SelectShare Project"
+      "label": "tsc: watch - 15. NodeJs_Express_TS"
     }
   ]
 }
